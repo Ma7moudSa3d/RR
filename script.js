@@ -86,11 +86,11 @@ function loadGallery() {
             caption: 'In quiet moments like these, I fall in love with you all over again. Your peaceful expression reminds me of the serenity you bring to my life.'
         },
         {
-            filename: 'WhatsApp%20Image%202025-09-07%20at%202.56.46%20PM.jpeg',
+            filename: 'WhatsApp-Image-2025-09-07-at-2.56.46-PM.jpeg',
             caption: 'With you, even the simplest moments by the water feel like forever in paradise ❤️🌊✨'
         },
         {
-            filename: 'WhatsApp%20Image%202025-09-07%20at%202.56.46%20PM%20(1).jpeg',
+            filename: 'WhatsApp-Image 2025-09-07-at-2.56.46-PM (1).jpeg',
             caption: 'Two hands, one heart, endless memories 💙✨'
         }
     ];
