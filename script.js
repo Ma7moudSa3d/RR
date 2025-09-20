@@ -235,7 +235,7 @@ Forever yours,
     }
 }
 function loadgetwell() {
-    const getwellContent = document.getElementById('getwellContent');
+    const getwellContent = document.getElementById('getwell-Content');
     if (!getwellContent) {
         console.error('Get Well content container not found');
         return;
