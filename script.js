@@ -256,7 +256,7 @@ Forever yours 💍❤️
         get-well-con.innerHTML = '';
         
         const gwetwellCard = document.createElement('div');
-        gwetwellCard.className = 'apology-card';
+        gwetwellCard.className = 'getwell-card';
         gwetwellCard.innerHTML = `
             <div class="getwell-text">${getwellText.replace(/\n/g, '<br><br>')}</div>
         `;
