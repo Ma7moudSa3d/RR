@@ -233,6 +233,39 @@ Forever yours,
         apologyContent.innerHTML = '<p style="color: #666; font-style: italic;">Error loading apology message.</p>';
     }
 }
+function loadgetwell() {
+    const getwellContent = document.getElementById('get-well-con');
+    if (!getwellContent) {
+        console.error('Get Well content container not found');
+        return;
+    }
+    
+    try {
+        const getwellText = `💌 My dearest love,
+
+It breaks my heart to know that you’re not feeling well 😔💔. I wish I could take away all your pain and make you smile again 🌸✨. You are the most precious part of my life 🌹, my sunshine ☀️, my safe place 🤍, and my happiness 💕.
+
+Please remember to rest, take care of yourself, and let your beautiful body and soul recover 💫. I’m sending you endless love, warm hugs 🤗❤️, and gentle kisses 😘💋 to give you strength. Even when you’re sick, you’re still the most beautiful and amazing person in my world 🌷✨.
+
+Get well soon, my angel 😇💖. I can’t wait to see your smile shining again and hold you close in my arms 🤍🌹. Until then, know that I’m always thinking of you, missing you deeply, and loving you more with every heartbeat 💓.
+
+Forever yours 💍❤️
+7amoody`;
+
+        // Clear existing content
+        get-well-con.innerHTML = '';
+        
+        const gwetwellCard = document.createElement('div');
+        gwetwellCard.className = 'apology-card';
+        gwetwellCard.innerHTML = `
+            <div class="getwell-text">${getwellText.replace(/\n/g, '<br><br>')}</div>
+        `;
+       getwellContent.appendChild(gwetwellCard);
+    } catch (error) {
+        console.error('Error loading Get Well message:', error);
+        getwellContent.innerHTML = '<p style="color: #666; font-style: italic;">Error loading Get Well message.</p>';
+    }
+}
 
 // Messages data and loader
 function loadMessages() {
