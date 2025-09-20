@@ -235,7 +235,7 @@ Forever yours,
     }
 }
 function loadgetwell() {
-    const getwellContent = document.getElementById('get-well-con');
+    const getwellContent = document.getElementById('getwellContent');
     if (!getwellContent) {
         console.error('Get Well content container not found');
         return;
@@ -254,7 +254,7 @@ Forever yours 💍❤️
 7amoody`;
 
         // Clear existing content
-        get-well-con.innerHTML = '';
+        getwellContent.innerHTML = '';
         
         const gwetwellCard = document.createElement('div');
         gwetwellCard.className = 'getwell-card';
