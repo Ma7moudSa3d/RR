@@ -398,6 +398,44 @@ blockquote {
 .apology-text br + br {
     line-height: 2;
 }
+/* Apology Message Styles */
+.get-well-con {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.getwell-card {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.getwell-card::before {
+    content: '🌷';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    background: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.getwell-text {
+    color: #333;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+.getwell-text br + br {
+    line-height: 2;
+}
 
 /* Timeline Styles */
 .timeline {
@@ -776,6 +814,14 @@ footer {
     }
     
     .apology-text {
+        font-size: 0.9rem;
+    }
+    .getwell-card {
+        padding: 1.5rem 1rem;
+        margin: 0 0.5rem 1.5rem;
+    }
+    
+    .getwell-text {
         font-size: 0.9rem;
     }
 }
