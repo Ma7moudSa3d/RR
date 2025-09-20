@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadMessages();
     loadBirthdayMessage();
     loadApologyMessage();
+    loadgetwell();
     loadTimeline();
 });
 
