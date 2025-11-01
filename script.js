@@ -100,7 +100,7 @@ function loadGallery() {
         },
         {
             filename: 'WhatsAppImage2025-09-07at2.56.49PM.jpeg',
-            caption: 'Sweet moments, sweeter with you 🧋💛 Even a simple drink feels special when it’s with you'
+            caption: 'Sweet moments, sweeter with you 💕🥰 Even a simple drink feels special when it’s with you'
         },
         {
             filename: 'WhatsAppImage2025-09-07at2.56.47PM.jpeg',
