@@ -23,16 +23,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     navBtns.forEach(btn => {
         btn.addEventListener('click', () => {
+            // اقفل كل الفيديوهات والكابشنات قبل ما تغيّر السيكشن
+            pauseAllVideos();
+            closeAllCaptions();
+    
             const targetSection = btn.dataset.section;
-            
-            // Remove active class from all buttons and sections
+    
+            // شيل active من الكل
             navBtns.forEach(b => b.classList.remove('active'));
             sections.forEach(s => s.classList.remove('active'));
-            
-            // Add active class to clicked button and target section
+    
+            // فعّل الزر والسيكشن المطلوب
             btn.classList.add('active');
             document.getElementById(targetSection).classList.add('active');
         });
+    });
+    document.addEventListener('visibilitychange', () => {
+          if (document.hidden) pauseAllVideos();
     });
     
     // Load content
@@ -44,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadgetwell();
     loadTimeline();
 });
+
 
 // Gallery data and loader
 function loadGallery() {
@@ -180,7 +188,9 @@ function loadVideos() {
             source.src = `videos/${video.filename}`;
             source.type = 'video/mp4';
             videoElement.appendChild(source);
-            
+            videoElement.addEventListener('play', () => {
+                pauseAllVideos(videoElement);
+            });
             // Add error handling
             videoElement.onerror = function() {
                 console.error(`Error loading video: ${video.filename}`);
@@ -205,6 +215,19 @@ function loadVideos() {
             console.error(`Error creating video item ${index}:`, error);
         }
     });
+}
+function pauseAllVideos(except = null) {
+    document.querySelectorAll('video').forEach(v => {
+        if (v !== except) {
+            v.pause();
+            v.currentTime = 0; // رجّعه لأول الفيديو
+        }
+    });
+}
+
+function closeAllCaptions() {
+    document.querySelectorAll('.gallery-caption.active').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.gallery-item.active').forEach(i => i.classList.remove('active'));
 }
 
 // Apology message loader with better error handling
