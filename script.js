@@ -98,6 +98,14 @@ function loadGallery() {
             caption: 'Two hands, one heart, endless memories 💙✨'
         },
         {
+            filename: 'WhatsAppImage2025-09-07at2.56.50PM.jpeg',
+            caption: 'Simple moments, endless love. 🌿❤️'
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.51PM.jpeg',
+            caption: 'Still falling for you in every frame. 📸💘'
+        },
+        {
             filename: 'WhatsAppImage2025-09-07at2.56.48PM.jpeg',
             caption: 'Dinner dates with my favorite person 🍝🍕❤️ Every bite tastes better with you by my side'
         },
