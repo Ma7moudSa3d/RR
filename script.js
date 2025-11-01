@@ -2,21 +2,23 @@
 window.toggleCaption = function(index) {
     const caption = document.getElementById(`caption-${index}`);
     const allCaptions = document.querySelectorAll('.gallery-caption');
-    
+
     if (!caption) {
         console.error(`Caption with id caption-${index} not found`);
         return;
     }
-    
-    // Hide all other captions
-    allCaptions.forEach((cap) => {
-        cap.classList.add('hidden');
-    });
-    
-    // Toggle the clicked caption
-    caption.classList.toggle('hidden');
-};
 
+    // لو الكابشن المفتوح هو نفسه اللي دوسنا عليه → اقفله
+    const isAlreadyVisible = !caption.classList.contains('hidden');
+
+    // اقفل كل الكابشنات الأول
+    allCaptions.forEach(cap => cap.classList.add('hidden'));
+
+    // لو الكابشن مش مفتوح قبل كده → افتحه
+    if (!isAlreadyVisible) {
+        caption.classList.remove('hidden');
+    }
+};
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
     const navBtns = document.querySelectorAll('.nav-btn');
