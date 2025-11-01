@@ -95,15 +95,15 @@ function loadGallery() {
             caption: 'Two hands, one heart, endless memories 💙✨'
         },
         {
-            filename: 'saad2.jpeg',
+            filename: 'WhatsAppImage2025-09-07at2.56.48PM.jpeg',
             caption: 'Dinner dates with my favorite person 🍝🍕❤️ Every bite tastes better with you by my side'
         },
         {
-            filename: 'saad3.jpeg',
+            filename: 'WhatsAppImage2025-09-07at2.56.49PM.jpeg',
             caption: 'Sweet moments, sweeter with you 🧋💛 Even a simple drink feels special when it’s with you'
         },
         {
-            filename: 'saad1.jpeg',
+            filename: 'WhatsAppImage2025-09-07at2.56.47PM.jpeg',
             caption: 'Just me and the love of my life 💞 My heart feels at home whenever I’m with you.'
         }
     ];
