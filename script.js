@@ -1,4 +1,3 @@
-// Function to toggle caption visibility (global scope)
 window.toggleCaption = function(index) {
     const allCaptions = document.querySelectorAll('.gallery-caption');
     const caption = document.getElementById(`caption-${index}`);
@@ -8,17 +7,17 @@ window.toggleCaption = function(index) {
         return;
     }
 
-    // لو الكابشن المفتوح هو نفس اللي دوسنا عليه → اقفله
     const isVisible = caption.classList.contains('active');
 
     // اقفل كل الكابشنات
     allCaptions.forEach(cap => cap.classList.remove('active'));
 
-    // لو الكابشن مش مفتوح قبل كده → افتحه
+    // لو مش مفتوح → افتحه
     if (!isVisible) {
         caption.classList.add('active');
     }
 };
+
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
     const navBtns = document.querySelectorAll('.nav-btn');
