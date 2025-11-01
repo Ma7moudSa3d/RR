@@ -1,20 +1,18 @@
 window.toggleCaption = function(index) {
-    const allCaptions = document.querySelectorAll('.gallery-caption');
+    const captions = document.querySelectorAll('.gallery-caption');
+    const items = document.querySelectorAll('.gallery-item');
     const caption = document.getElementById(`caption-${index}`);
+    const item = caption ? caption.closest('.gallery-item') : null;
+    const isOpen = caption?.classList.contains('active');
 
-    if (!caption) {
-        console.error(`Caption with id caption-${index} not found`);
-        return;
-    }
+    // اقفل الكل
+    captions.forEach(c => c.classList.remove('active'));
+    items.forEach(i => i.classList.remove('active'));
 
-    const isVisible = caption.classList.contains('active');
-
-    // اقفل كل الكابشنات
-    allCaptions.forEach(cap => cap.classList.remove('active'));
-
-    // لو مش مفتوح → افتحه
-    if (!isVisible) {
+    // لو مش مفتوح، افتح الحالي
+    if (!isOpen && caption) {
         caption.classList.add('active');
+        if (item) item.classList.add('active');
     }
 };
 
@@ -114,8 +112,8 @@ function loadGallery() {
         galleryItem.className = 'gallery-item';
         galleryItem.innerHTML = `
             <img src="images/${image.filename}" alt="Our Memory" loading="lazy" onclick="toggleCaption(${index})">
-            <div class="gallery-caption hidden" id="caption-${index}">${image.caption}</div>
-        `;
+            <div class="gallery-caption" id="caption-${index}">${image.caption}</div>
+            `;
         galleryGrid.appendChild(galleryItem);
     });
 }
