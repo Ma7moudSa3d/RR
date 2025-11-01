@@ -38,14 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(targetSection).classList.add('active');
         });
     });
-    document.entListener('visibilitychange', () => {
-          if (document.hidden) pauseAllVideos();
-    });
-    document.addEventListener('play', (e) => {
-          if (e.target.tagName === 'VIDEO') {
-                pauseAllVideos(e.target); // وقف أي فيديو تاني غير اللي لسه بدأ
-              }
-        }, true);
     // Load content
     loadGallery();
     loadVideos();
@@ -192,9 +184,9 @@ function loadVideos() {
             source.src = `videos/${video.filename}`;
             source.type = 'video/mp4';
             videoElement.appendChild(source);
-            videoElement.addEventListener('play', () => {
-                pauseAllVideos(videoElement);
-            });
+            // videoElement.addEventListener('play', () => {
+            //     pauseAllVideos(videoElement);
+            // });
             // Add error handling
             videoElement.onerror = function() {
                 console.error(`Error loading video: ${video.filename}`);
@@ -221,13 +213,21 @@ function loadVideos() {
     });
 }
 function pauseAllVideos(except = null) {
+    // document.querySelectorAll('video').forEach(v => {
+    //     if (v !== except) {
+    //         v.pause();
+    //         v.currentTime = 0; // رجّعه لأول الفيديو
+    //     }
+    // });
     document.querySelectorAll('video').forEach(v => {
-        if (v !== except) {
-            v.pause();
-            v.currentTime = 0; // رجّعه لأول الفيديو
-        }
-    });
+    if (v !== except) v.pause();
+  });
 }
+document.addEventListener('play', (e) => {
+  if (e.target.tagName === 'VIDEO') {
+    pauseAllVideos(e.target); // وقف أي فيديو تاني غير اللي لسه بدأ
+  }
+}, true);
 
 function closeAllCaptions() {
     document.querySelectorAll('.gallery-caption.active').forEach(c => c.classList.remove('active'));
