@@ -38,10 +38,14 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(targetSection).classList.add('active');
         });
     });
-    document.addEventListener('visibilitychange', () => {
+    document.entListener('visibilitychange', () => {
           if (document.hidden) pauseAllVideos();
     });
-    
+    document.addEventListener('play', (e) => {
+          if (e.target.tagName === 'VIDEO') {
+                pauseAllVideos(e.target); // وقف أي فيديو تاني غير اللي لسه بدأ
+              }
+        }, true);
     // Load content
     loadGallery();
     loadVideos();
