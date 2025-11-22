@@ -116,6 +116,18 @@ function loadGallery() {
         {
             filename: 'WhatsAppImage2025-09-07at2.56.47PM.jpeg',
             caption: 'Just me and the love of my life 💞 My heart feels at home whenever I’m with you.'
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.61PM.jpeg',
+            caption: 'Having U with me is the most priceless gift i have got , stay with me my love ❤️💞'
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.65PM.jpeg',
+            caption: 'no one can have that eye look from me , i love you being too close to me and i adore your eyes 👀❤️ '
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.62PM.jpeg',
+            caption: 'night moments with you is something that i fall into , i love night also i love you ..... know that iam being lucky to have a beautiful girl like you 😘❤️❤️ '
         }
     ];
     
