@@ -192,6 +192,11 @@ function loadVideos() {
             title: 'Forever Us',
             filename: 'WhatsAppVideo2025-08-08at11.50.49PM(1).mp4',
             caption: 'Through every laugh, every glance, every shared moment, we build something beautiful that will last forever. This is us, this is our love.'
+        },
+        {
+            title: 'U r my fav',
+            filename: 'WhatsAppVideo2025-08-08at11.50.60PM(1).mp4',
+            caption: '😘'
         }
     ];
     
