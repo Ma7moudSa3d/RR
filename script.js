@@ -128,6 +128,18 @@ function loadGallery() {
         {
             filename: 'WhatsAppImage2025-09-07at2.56.62PM.jpeg',
             caption: 'night moments with you is something that i fall into , i love night also i love you ..... know that iam being lucky to have a beautiful girl like you 😘❤️❤️ '
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.66PM.jpeg',
+            caption: 'U got me loving your handmade cooks from that small cute hands that i love , u r a special ❤️❤️ '
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.67PM.jpeg',
+            caption: 'Elegant beautiful gift from my princess , loved that 😘❤️'
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.69PM.jpeg',
+            caption: 'THX for making my birthday special , my angel you are my birthday gift 💕🥰'
         }
     ];
     
