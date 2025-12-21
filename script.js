@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(targetSection).classList.add('active');
         });
     });
-    // Load content
+     // Load content
     loadGallery();
     loadVideos();
     loadMessages();
@@ -46,6 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
     loadApologyMessage();
     loadgetwell();
     loadTimeline();
+    loadDateGallery();  // ← لازم تكون هنا! ✅
+    
+    console.log('✅ كل الـ loaders اتنادوا');
 });
 
 
