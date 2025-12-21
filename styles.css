@@ -953,4 +953,31 @@ footer {
         margin-top: 1.5rem;
     }
 }
+.date-title {
+    font-size: 2.8rem;
+    color: #e91e63;
+    letter-spacing: 2px;
+    font-weight: 700;
+    display: inline-block;
+    animation: floatUpDown 2.4s ease-in-out infinite;
+}
 
+@keyframes floatUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.date-grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.date-item {
+    animation: fadeInUp 0.8s ease both;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
