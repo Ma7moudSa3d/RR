@@ -491,23 +491,23 @@ function loadDateGallery() {
             caption: 'دبلتنا مش دهب وبس… دي وعد عمر 💛💍'
         },
         {
-            filename: 'WhatsAppImage2025-09-07at2.56.91PM.jpeg.jpeg',
+            filename: 'WhatsAppImage2025-09-07at2.56.91PM.jpeg',
             caption: 'ادام الله وجوك معي ... أدام الله فرحتنا معا ✨❤️'
         },
         {
-            filename: 'WhatsAppImage2025-09-07at2.56.92PM.jpeg.jpeg',
+            filename: 'WhatsAppImage2025-09-07at2.56.92PM.jpeg',
             caption: 'أدام الله فرحة كانت أنتي سببها وهدفها ونهايتها ❤️❤️'
         },
         {
-            filename: 'WhatsAppImage2025-09-07at2.56.93PM.jpeg.jpeg',
+            filename: 'WhatsAppImage2025-09-07at2.56.93PM.jpeg',
             caption: 'لا ينقص عائلتنا الصغيرة الا فرد , وفقنا الله في ضمه الينا 💍'
         },
         {
-            filename: 'WhatsAppImage2025-09-07at2.56.94PM.jpeg.jpeg',
+            filename: 'WhatsAppImage2025-09-07at2.56.94PM.jpeg',
             caption: 'كلنا سعداء باقترابك وقربك ... وكأن الله يحفظ لكي مكانا في عائلتنا ❤️🫂'
         },
         {
-            filename: 'WhatsAppImage2025-09-07at2.56.95PM.jpeg.jpeg',
+            filename: 'WhatsAppImage2025-09-07at2.56.95PM.jpeg',
             caption: ' مشوار ورا مشوار… لحد ما نبقى بيت واحد 🤍💍'
         }
     ];
