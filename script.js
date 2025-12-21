@@ -481,13 +481,20 @@ function loadTimeline() {
 }
 function loadDateGallery() {
     const dateGrid = document.getElementById('date-grid');
-    if (!dateGrid) return;
+    
+    // 🔍 Debug
+    console.log('dateGrid element:', dateGrid);
+    
+    if (!dateGrid) {
+        console.error('❌ date-grid مش موجود!');
+        return;
+    }
 
     const startIndex = 1000;
 
     const images = [
         {
-            filename: 'WhatsAppImage2025-09-07at2.56.90PM.jpeg',  // ← شيل .jpeg الزيادة!
+            filename: 'WhatsAppImage2025-09-07at2.56.90PM.jpeg',  // ← تأكد مفيش .jpeg.jpeg
             caption: 'دبلتنا مش دهب وبس… دي وعد عمر 💛💍'
         },
         {
@@ -512,14 +519,22 @@ function loadDateGallery() {
         }
     ];
 
+    // 🔍 Debug
+    console.log('عدد الصور:', images.length);
+
     images.forEach((image, index) => {
         const globalIndex = startIndex + index;
         const item = document.createElement('div');
-        item.className = 'date-item';  // ← غيرها لـ date-item ✅
+        item.className = 'date-item';
         item.innerHTML = `
-            <img src="images/${image.filename}" alt="Our Engagement Memory" loading="lazy" onclick="toggleCaption(${globalIndex})">
+            <img src="images/${image.filename}" alt="Our Engagement Memory" loading="lazy" onclick="toggleCaption(${globalIndex})" onerror="console.error('❌ الصورة مش موجودة:', '${image.filename}')">
             <div class="gallery-caption" id="caption-${globalIndex}">${image.caption}</div>
         `;
         dateGrid.appendChild(item);
+        
+        // 🔍 Debug
+        console.log('✅ تم إضافة صورة:', image.filename);
     });
+    
+    console.log('✅ تم تحميل كل الصور');
 }
