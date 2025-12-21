@@ -479,4 +479,51 @@ function loadTimeline() {
         timeline.appendChild(timelineItem);
     });
 }
+function loadDateGallery() {
+    const dateGrid = document.getElementById('date-grid');
+    if (!dateGrid) return;
 
+    const startIndex = 1000;
+
+    const images = [
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.90PM.jpeg.jpeg',
+            caption: 'دبلتنا مش دهب وبس… دي وعد عمر 💛💍'
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.91PM.jpeg.jpeg',
+            caption: 'ادام الله وجوك معي ... أدام الله فرحتنا معا ✨❤️'
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.92PM.jpeg.jpeg',
+            caption: 'أدام الله فرحة كانت أنتي سببها وهدفها ونهايتها ❤️❤️'
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.93PM.jpeg.jpeg',
+            caption: 'لا ينقص عائلتنا الصغيرة الا فرد , وفقنا الله في ضمه الينا 💍'
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.94PM.jpeg.jpeg',
+            caption: 'كلنا سعداء باقترابك وقربك ... وكأن الله يحفظ لكي مكانا في عائلتنا ❤️🫂'
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.95PM.jpeg.jpeg',
+            caption: ' مشوار ورا مشوار… لحد ما نبقى بيت واحد 🤍💍'
+        }
+    ];
+
+    images.forEach((image, index) => {
+        const globalIndex = startIndex + index;
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.innerHTML = `
+            <img src="images/${image.filename}" alt="Our Engagement Memory" loading="lazy" onclick="toggleCaption(${globalIndex})">
+            <div class="gallery-caption" id="caption-${globalIndex}">${image.caption}</div>
+        `;
+        dateGrid.appendChild(item);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadDateGallery();
+});
