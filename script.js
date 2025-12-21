@@ -487,7 +487,7 @@ function loadDateGallery() {
 
     const images = [
         {
-            filename: 'WhatsAppImage2025-09-07at2.56.90PM.jpeg.jpeg',
+            filename: 'WhatsAppImage2025-09-07at2.56.90PM.jpeg',  // ← شيل .jpeg الزيادة!
             caption: 'دبلتنا مش دهب وبس… دي وعد عمر 💛💍'
         },
         {
@@ -515,7 +515,7 @@ function loadDateGallery() {
     images.forEach((image, index) => {
         const globalIndex = startIndex + index;
         const item = document.createElement('div');
-        item.className = 'gallery-item';
+        item.className = 'date-item';  // ← غيرها لـ date-item ✅
         item.innerHTML = `
             <img src="images/${image.filename}" alt="Our Engagement Memory" loading="lazy" onclick="toggleCaption(${globalIndex})">
             <div class="gallery-caption" id="caption-${globalIndex}">${image.caption}</div>
@@ -523,7 +523,3 @@ function loadDateGallery() {
         dateGrid.appendChild(item);
     });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    loadDateGallery();
-});
