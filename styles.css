@@ -60,11 +60,29 @@ nav {
 }
 
 /* Main Content */
+
 main {
     margin-top: 80px;
     min-height: calc(100vh - 80px);
 }
+/* في الـ Responsive Design section */
+@media (max-width: 768px) {
+    main {
+        margin-top: 140px; /* ✅ زود المساحة لو الـ navbar كبير */
+    }
+}
 
+@media (max-width: 480px) {
+    main {
+        margin-top: 150px; /* ✅ زود أكتر للشاشات الصغيرة */
+    }
+}
+
+@media (max-width: 320px) {
+    main {
+        margin-top: 160px; /* ✅ أصغر شاشة */
+    }
+}
 .section {
     display: none;
     padding: 2rem;
@@ -982,58 +1000,12 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 /* Save The Date Section - الإضافات الناقصة */
-.date-header {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding: 2rem;
-}
-
-.date-subtitle {
-    font-size: 1.2rem;
-    color: #555;
-    max-width: 700px;
-    margin: 1rem auto 0;
-    line-height: 1.8;
-    direction: rtl;
-}
-
-.date-item {
-    border-radius: 15px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    animation: fadeInUp 0.8s ease both;
-}
-
-.date-item:hover {
-    transform: translateY(-5px);
-}
-
-/* .date-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-} */
-.date-item img {
-    width: 100%;
-    height: auto;  /* ← الارتفاع يكون طبيعي */
-    object-fit: contain;  /* ← يحافظ على النسبة */
-    display: block;
-    border-radius: 10px;
-}
-
-.date-item img:hover {
-    transform: scale(1.02);
-} */
 /* Save The Date Section */
 .date-header {
     text-align: center;
     margin-bottom: 2rem;
     padding: 2rem;
+    padding-top: 1rem; /* مساحة من فوق */
 }
 
 .date-title {
@@ -1043,6 +1015,7 @@ footer {
     font-weight: 700;
     display: inline-block;
     animation: floatUpDown 2.4s ease-in-out infinite;
+    word-break: break-word; /* لو العنوان طويل */
 }
 
 @keyframes floatUpDown {
@@ -1057,6 +1030,7 @@ footer {
     margin: 1rem auto 0;
     line-height: 1.8;
     direction: rtl;
+    padding: 0 1rem; /* مساحة من الجوانب */
 }
 
 /* Date Grid - Responsive */
@@ -1065,7 +1039,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    justify-items: center; /* توسيط الصور */
+    justify-items: center;
     align-items: start;
 }
 
@@ -1079,7 +1053,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: fit-content; /* الـ container ياخد حجم الصورة */
+    width: fit-content;
     max-width: 100%;
 }
 
@@ -1088,9 +1062,9 @@ footer {
 }
 
 .date-item img {
-    max-width: 100%; /* الصورة متعداش الـ container */
-    width: auto; /* الصورة تاخد عرضها الطبيعي */
-    height: auto; /* الصورة تاخد ارتفاعها الطبيعي */
+    max-width: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
     display: block;
     border-radius: 10px;
@@ -1102,7 +1076,6 @@ footer {
     transform: scale(1.02);
 }
 
-/* Caption للـ Date Section */
 .date-item .gallery-caption {
     position: absolute;
     bottom: 0;
@@ -1134,7 +1107,7 @@ footer {
 
 /* ========== Responsive للـ Date Section ========== */
 
-/* Tablet - صورتين في الـ row */
+/* Tablet */
 @media (max-width: 992px) {
     .date-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1150,8 +1123,33 @@ footer {
     }
 }
 
-/* Mobile - صورة واحدة في الـ row */
+/* Mobile */
 @media (max-width: 768px) {
+    /* ✅ زيادة المساحة فوق السيكشن عشان الـ navbar */
+    #date-sec {
+        padding-top: 1rem;
+    }
+    
+    .date-header {
+        padding: 1.5rem 1rem;
+        padding-top: 2rem; /* مساحة إضافية من فوق */
+        margin-bottom: 1.5rem;
+    }
+    
+    .date-title {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+        line-height: 1.4;
+        padding: 0 0.5rem;
+    }
+    
+    .date-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+        line-height: 1.6;
+        margin-top: 1rem;
+    }
+    
     .date-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1160,47 +1158,42 @@ footer {
     
     .date-item {
         width: 100%;
-        max-width: 400px; /* حد أقصى للعرض على الموبايل */
+        max-width: 400px;
         margin: 0 auto;
     }
     
     .date-item img {
-        width: 100%; /* على الموبايل الصورة تاخد عرض الـ container */
+        width: 100%;
         max-width: 100%;
-    }
-    
-    .date-title {
-        font-size: 2rem;
-    }
-    
-    .date-subtitle {
-        font-size: 1rem;
-        padding: 0 1rem;
-    }
-    
-    .date-header {
-        padding: 1rem;
     }
 }
 
 /* Small Mobile */
 @media (max-width: 480px) {
-    .date-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 0 0.5rem;
+    #date-sec {
+        padding-top: 0.5rem;
     }
     
-    .date-item {
-        max-width: 100%;
+    .date-header {
+        padding: 1rem 0.5rem;
+        padding-top: 1.5rem;
     }
     
     .date-title {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        letter-spacing: 0.5px;
     }
     
     .date-subtitle {
         font-size: 0.9rem;
+        padding: 0 0.5rem;
+        line-height: 1.5;
+    }
+    
+    .date-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.5rem;
     }
     
     .date-item .gallery-caption {
@@ -1211,11 +1204,17 @@ footer {
 
 /* Very Small Mobile */
 @media (max-width: 320px) {
+    .date-header {
+        padding: 0.8rem 0.3rem;
+        padding-top: 1rem;
+    }
+    
     .date-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
     .date-subtitle {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        padding: 0 0.3rem;
     }
 }
