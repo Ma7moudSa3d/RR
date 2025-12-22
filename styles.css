@@ -1001,11 +1001,18 @@ footer {
 }
 /* Save The Date Section - الإضافات الناقصة */
 /* Save The Date Section */
+/* ========== Save The Date Section ========== */
+
+#date-sec {
+    padding-top: 2rem;
+}
+
 .date-header {
     text-align: center;
     margin-bottom: 2rem;
     padding: 2rem;
-    padding-top: 1rem; /* مساحة من فوق */
+    padding-top: 3rem;
+    margin-top: 1rem;
 }
 
 .date-title {
@@ -1015,7 +1022,8 @@ footer {
     font-weight: 700;
     display: inline-block;
     animation: floatUpDown 2.4s ease-in-out infinite;
-    word-break: break-word; /* لو العنوان طويل */
+    word-break: break-word;
+    margin-top: 1rem;
 }
 
 @keyframes floatUpDown {
@@ -1027,13 +1035,13 @@ footer {
     font-size: 1.2rem;
     color: #555;
     max-width: 700px;
-    margin: 1rem auto 0;
+    margin: 1.5rem auto 0;
     line-height: 1.8;
     direction: rtl;
-    padding: 0 1rem; /* مساحة من الجوانب */
+    padding: 0 1rem;
 }
 
-/* Date Grid - Responsive */
+/* Date Grid */
 .date-grid {
     margin-top: 2rem;
     display: grid;
@@ -1109,6 +1117,15 @@ footer {
 
 /* Tablet */
 @media (max-width: 992px) {
+    #date-sec {
+        padding-top: 2.5rem;
+    }
+    
+    .date-header {
+        padding-top: 3.5rem;
+        margin-top: 1.5rem;
+    }
+    
     .date-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.2rem;
@@ -1116,23 +1133,25 @@ footer {
     
     .date-title {
         font-size: 2.2rem;
+        margin-top: 1.5rem;
     }
     
     .date-subtitle {
         font-size: 1.1rem;
+        margin-top: 1.5rem;
     }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-    /* ✅ زيادة المساحة فوق السيكشن عشان الـ navbar */
     #date-sec {
-        padding-top: 1rem;
+        padding-top: 3rem;
     }
     
     .date-header {
         padding: 1.5rem 1rem;
-        padding-top: 2rem; /* مساحة إضافية من فوق */
+        padding-top: 4rem;
+        margin-top: 2rem;
         margin-bottom: 1.5rem;
     }
     
@@ -1141,13 +1160,14 @@ footer {
         letter-spacing: 1px;
         line-height: 1.4;
         padding: 0 0.5rem;
+        margin-top: 2rem;
     }
     
     .date-subtitle {
         font-size: 1rem;
         padding: 0 1rem;
         line-height: 1.6;
-        margin-top: 1rem;
+        margin-top: 1.5rem;
     }
     
     .date-grid {
@@ -1171,23 +1191,26 @@ footer {
 /* Small Mobile */
 @media (max-width: 480px) {
     #date-sec {
-        padding-top: 0.5rem;
+        padding-top: 3.5rem;
     }
     
     .date-header {
         padding: 1rem 0.5rem;
-        padding-top: 1.5rem;
+        padding-top: 4.5rem;
+        margin-top: 2.5rem;
     }
     
     .date-title {
         font-size: 1.5rem;
         letter-spacing: 0.5px;
+        margin-top: 2.5rem;
     }
     
     .date-subtitle {
         font-size: 0.9rem;
         padding: 0 0.5rem;
         line-height: 1.5;
+        margin-top: 1.5rem;
     }
     
     .date-grid {
@@ -1204,17 +1227,24 @@ footer {
 
 /* Very Small Mobile */
 @media (max-width: 320px) {
+    #date-sec {
+        padding-top: 4rem;
+    }
+    
     .date-header {
         padding: 0.8rem 0.3rem;
-        padding-top: 1rem;
+        padding-top: 5rem;
+        margin-top: 3rem;
     }
     
     .date-title {
         font-size: 1.3rem;
+        margin-top: 3rem;
     }
     
     .date-subtitle {
         font-size: 0.8rem;
         padding: 0 0.3rem;
+        margin-top: 1.5rem;
     }
 }
