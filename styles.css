@@ -68,19 +68,19 @@ main {
 /* في الـ Responsive Design section */
 @media (max-width: 768px) {
     main {
-        margin-top: 140px; /* ✅ زود المساحة لو الـ navbar كبير */
+        margin-top: 160px; /* ✅ زود المساحة لو الـ navbar كبير */
     }
 }
 
 @media (max-width: 480px) {
     main {
-        margin-top: 150px; /* ✅ زود أكتر للشاشات الصغيرة */
+        margin-top: 180px; /* ✅ زود أكتر للشاشات الصغيرة */
     }
 }
 
 @media (max-width: 320px) {
     main {
-        margin-top: 160px; /* ✅ أصغر شاشة */
+        margin-top: 200px; /* ✅ أصغر شاشة */
     }
 }
 .section {
