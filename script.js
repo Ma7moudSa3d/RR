@@ -143,6 +143,22 @@ function loadGallery() {
         {
             filename: 'WhatsAppImage2025-09-07at2.56.69PM.jpeg',
             caption: 'THX for making my birthday special , my angel you are my birthday gift 💕🥰'
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.70PM.jpeg',
+            caption: 'Adorable Eyes 👀 ,Iam in love with them 😘❤️'
+        },
+        {
+            filename: 'WhatsAppImage2025-09-07at2.56.73PM.jpeg',
+            caption: 'Our first celebration together at my best friend’s engagement, with the love of my life by my side 💍❤️'
+        },
+            {
+            filename: 'WhatsAppImage2025-09-07at2.56.75PM.jpeg',
+            caption: 'With my fiancée, my peace, my always 💍✨❤️'
+        },
+                {
+            filename: 'WhatsAppImage2025-09-07at2.56.74PM.jpeg',
+            caption: 'It’s not just pictures that bring us together but our hearts that beat as one, I love you ❤️📸💞'
         }
     ];
     
@@ -200,7 +216,22 @@ function loadVideos() {
             title: 'U r my fav',
             filename: 'WhatsAppVideo2025-08-08at11.50.60PM(1).mp4',
             caption: '😘'
-        }
+        },
+        {
+            title: 'Engaged',
+            filename: 'WhatsAppVideo2025-08-08at11.50.61PM(1).mp4',
+            caption: 'Totally Engaged 💍✨❤️'
+        },
+        {
+            title: 'Engaged',
+            filename: 'WhatsAppVideo2025-08-08at11.50.62PM(1).mp4',
+            caption: 'Part 2 💍❤️'
+        },
+            {
+            title: 'jealous',
+            filename: 'WhatsAppVideo2025-08-08at11.50.63PM(1).mp4',
+            caption: 'لمي نفسك 🤨'
+        },
     ];
     
     // Clear existing content
