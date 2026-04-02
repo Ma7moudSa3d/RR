@@ -572,3 +572,53 @@ function loadDateGallery() {
     
     console.log('✅ تم تحميل كل الصور');
 }
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ── Navigation ─────────────────────────────────────────────── */
+  const navBtns   = document.querySelectorAll('.nav-btn');
+  const sections  = document.querySelectorAll('.section');
+  const hamburger = document.getElementById('navHamburger');
+  const navBtnsWrap = document.getElementById('navButtons');
+
+  function showSection(sectionId) {
+    sections.forEach(s => s.classList.remove('active'));
+    navBtns.forEach(b => b.classList.remove('active'));
+
+    const target = document.getElementById(sectionId);
+    if (target) target.classList.add('active');
+
+    const activeBtn = document.querySelector(`[data-section="${sectionId}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    /* ── Notify Love Survey module when its section is activated ── */
+    /* ★ THIS IS THE INTEGRATION HOOK — leave this block intact */
+    if (sectionId === 'love-survey' && typeof initLoveSurvey === 'function') {
+      initLoveSurvey();
+    }
+  }
+
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      showSection(btn.dataset.section);
+      // Close hamburger menu on mobile
+      navBtnsWrap.classList.remove('open');
+    });
+  });
+
+  // Hamburger toggle
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      navBtnsWrap.classList.toggle('open');
+    });
+  }
+
+  // Default: show home
+  showSection('home');
+
+  /* ── Your existing loader functions go below ───────────────── */
+  // e.g. loadGallery(), loadVideos(), loadTimeline(), etc.
+  // They are unchanged — Love Survey is isolated in love-survey.js
+
+});
