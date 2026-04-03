@@ -1,3 +1,4 @@
+console.log("SCRIPT FILE LOADED ✅");
 window.toggleCaption = function(index) {
     const captions = document.querySelectorAll('.gallery-caption');
     const items = document.querySelectorAll('.gallery-item');
