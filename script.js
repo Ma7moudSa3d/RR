@@ -260,13 +260,16 @@ function loadVideos() {
                 videoItem.appendChild(errorMsg);
             };
             
-            videoItem.innerHTML = `
-                <h3>${video.title}</h3>
-            `;
+            const title = document.createElement('h3');
+            title.textContent = video.title;
+            
+            const caption = document.createElement('p');
+            caption.className = 'video-caption';
+            caption.textContent = video.caption;
+            
+            videoItem.appendChild(title);
             videoItem.appendChild(videoElement);
-            videoItem.innerHTML += `
-                <p class="video-caption">${video.caption}</p>
-            `;
+            videoItem.appendChild(caption);
             
             videosContainer.appendChild(videoItem);
         } catch (error) {
@@ -1090,12 +1093,13 @@ const LS = {
         const currentAnswer = this.currentSetupAnswers[q.id]?.selected;
 
         ['A', 'B', 'C'].forEach(opt => {
+            const key = opt.toLowerCase();
             const btn = document.createElement('button');
             btn.className = `ls-option-btn ${currentAnswer === opt ? 'selected' : ''}`;
-            btn.innerText = q['option' + opt];
+            btn.innerText = q[key];
             btn.onclick = () => this.selectSetupOption(q, opt);
             optionsDiv.appendChild(btn);
-        });
+                });
 
         document.getElementById('ls-btn-prev').disabled = this.setupIndex === 0;
     },
@@ -1104,7 +1108,7 @@ const LS = {
         this.currentSetupAnswers[q.id] = {
             questionId: q.id,
             selected: opt,
-            text: q['option' + opt],
+            text: q[opt.toLowerCase()],
             timestamp: Date.now()
         };
         
@@ -1190,12 +1194,13 @@ const LS = {
         optionsDiv.innerHTML = '';
         
         ['A', 'B', 'C'].forEach(opt => {
+            const key = opt.toLowerCase();
             const btn = document.createElement('button');
             btn.className = 'ls-option-btn';
-            btn.innerText = q['option' + opt];
+            btn.innerText = q[key];
             btn.onclick = () => this.submitQuizAnswer(btn, opt, q);
             optionsDiv.appendChild(btn);
-        });
+                });
     },
 
     submitQuizAnswer(btn, selectedOpt, q) {
