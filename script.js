@@ -374,7 +374,7 @@ function loadMessages() {
         },
         {
             title: 'Our Journey Together',
-            content: 'Every step we\\'ve taken together has been a blessing. From our first conversations to our shared adventures under palm trees, each memory we\\'ve created is etched in my heart forever. The way your fingers intertwine with mine tells a story of love that words could never fully express. I cherish every second, every glance, and every touch we share.'
+            content: 'Every step we have taken together has been a blessing. From our first conversations to our shared adventures under palm trees, each memory we have created is etched in my heart forever. The way your fingers intertwine with mine tells a story of love that words could never fully express. I cherish every second, every glance, and every touch we share.'
         },
         {
             title: 'What You Mean to Me',
@@ -390,7 +390,7 @@ function loadMessages() {
         },
         {
             title: 'The Art of Our Love',
-            content: 'Our love is like a masterpiece, painted with the colors of our experiences together. From the artistic photos we\\'ve taken to the cartoon versions of ourselves, each representation captures a different facet of our connection. Just like the butterflies that flutter around our memories, my heart takes flight whenever I think of you.'
+            content: 'Our love is like a masterpiece, painted with the colors of our experiences together. From the artistic photos we have taken to the cartoon versions of ourselves, each representation captures a different facet of our connection. Just like the butterflies that flutter around our memories, my heart takes flight whenever I think of you.'
         }
     ];
     
