@@ -1,4 +1,3 @@
-console.log("SCRIPT FILE LOADED ✅");
 window.toggleCaption = function(index) {
     const captions = document.querySelectorAll('.gallery-caption');
     const items = document.querySelectorAll('.gallery-item');
@@ -26,12 +25,16 @@ document.addEventListener('DOMContentLoaded', function() {
             closeAllCaptions();
     
             const targetSection = btn.dataset.section;
-    
+
             navBtns.forEach(b => b.classList.remove('active'));
             sections.forEach(s => s.classList.remove('active'));
-    
+
             btn.classList.add('active');
             document.getElementById(targetSection).classList.add('active');
+
+            // start every page from the top, and keep the active tab visible in the swipeable nav on phones
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            btn.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
         });
     });
 
@@ -43,9 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadgetwell();
     loadTimeline();
     loadDateGallery();
-    
-    console.log('✅ كل الـ loaders اتنادوا');
-    
+
     // Initialize Love Survey if ready
     if (typeof LS !== 'undefined' && LS.init) {
         LS.init();
@@ -165,7 +166,9 @@ function loadGallery() {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
         galleryItem.innerHTML = `
-            <img src="images/${image.filename}" alt="Our Memory" loading="lazy" onclick="toggleCaption(${index})">
+            <img src="images/${image.filename}" alt="Our Memory ${index + 1}" loading="lazy" tabindex="0" role="button"
+                 onclick="toggleCaption(${index})"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCaption(${index})}">
             <div class="gallery-caption" id="caption-${index}">${image.caption}</div>
             `;
         galleryGrid.appendChild(galleryItem);
@@ -242,10 +245,8 @@ function loadVideos() {
             const videoElement = document.createElement('video');
             videoElement.controls = true;
             videoElement.preload = 'metadata';
-            videoElement.style.width = '100%';
-            videoElement.style.maxWidth = '100%';
-            videoElement.style.height = 'auto';
-            
+            videoElement.playsInline = true;
+
             const source = document.createElement('source');
             source.src = `videos/${video.filename}`;
             source.type = 'video/mp4';
@@ -324,7 +325,7 @@ Forever yours,
         const apologyCard = document.createElement('div');
         apologyCard.className = 'apology-card';
         apologyCard.innerHTML = `
-            <div class="apology-text">${apologyText.replace(/\n/g, '<br><br>')}</div>
+            <div class="apology-text">${apologyText}</div>
         `;
         apologyContent.appendChild(apologyCard);
     } catch (error) {
@@ -357,7 +358,7 @@ Forever yours 💍❤️
         const gwetwellCard = document.createElement('div');
         gwetwellCard.className = 'getwell-card';
         gwetwellCard.innerHTML = `
-            <div class="getwell-text">${getwellText.replace(/\n/g, '<br><br>')}</div>
+            <div class="getwell-text">${getwellText}</div>
         `;
         getwellContent.appendChild(gwetwellCard);
     } catch (error) {
@@ -432,7 +433,7 @@ I love you more than words can express, today and always. You are my forever bir
         birthdayCard.className = 'birthday-card';
         birthdayCard.innerHTML = `
             <div class="birthday-decoration">🎂✨🎉</div>
-            <div class="birthday-text">${birthdayMessage.replace(/\n/g, '<br><br>')}</div>
+            <div class="birthday-text">${birthdayMessage}</div>
             <div class="birthday-signature">Forever yours,<br>7amoody 💕</div>
         `;
         birthdayContent.appendChild(birthdayCard);
@@ -475,11 +476,9 @@ function loadTimeline() {
 
 function loadDateGallery() {
     const dateGrid = document.getElementById('date-grid');
-    
-    console.log('dateGrid element:', dateGrid);
-    
+
     if (!dateGrid) {
-        console.error('❌ date-grid مش موجود!');
+        console.error('date-grid not found');
         return;
     }
 
@@ -512,22 +511,18 @@ function loadDateGallery() {
         }
     ];
 
-    console.log('عدد الصور:', images.length);
-
     images.forEach((image, index) => {
         const globalIndex = startIndex + index;
         const item = document.createElement('div');
         item.className = 'date-item';
         item.innerHTML = `
-            <img src="images/${image.filename}" alt="Our Engagement Memory" loading="lazy" onclick="toggleCaption(${globalIndex})" onerror="console.error('❌ الصورة مش موجودة:', '${image.filename}')">
-            <div class="gallery-caption" id="caption-${globalIndex}">${image.caption}</div>
+            <img src="images/${image.filename}" alt="Our Engagement Memory ${index + 1}" loading="lazy" tabindex="0" role="button"
+                 onclick="toggleCaption(${globalIndex})"
+                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCaption(${globalIndex})}">
+            <div class="gallery-caption" id="caption-${globalIndex}" lang="ar" dir="rtl">${image.caption}</div>
         `;
         dateGrid.appendChild(item);
-        
-        console.log('✅ تم إضافة صورة:', image.filename);
     });
-    
-    console.log('✅ تم تحميل كل الصور');
 }
 
 /* ========================================================================= */
@@ -772,7 +767,6 @@ const LS = {
     quizScore: 0,
     
     init() {
-        console.log("💘 Love Survey Initialized!");
         this.renderView('auth');
         this.checkExistingSession();
     },
@@ -811,8 +805,15 @@ const LS = {
 
     checkLockout() {
         if (!this.tempUser) return false;
+
+        // reset first, so switching from a locked user to an unlocked one doesn't leave the form disabled
+        if (this.lockInterval) clearInterval(this.lockInterval);
+        document.getElementById('ls-pwd').disabled = false;
+        document.querySelector('#ls-login-form .ls-btn').disabled = false;
+        document.getElementById('ls-lockout-timer').classList.add('ls-hidden');
+
         const lockTime = this.get(`${this.tempUser}_lockout`);
-        
+
         if (lockTime && Date.now() < lockTime) {
             document.getElementById('ls-pwd').disabled = true;
             document.querySelector('#ls-login-form .ls-btn').disabled = true;
@@ -1247,8 +1248,9 @@ const LS = {
         let lastQuizDateStr = this.get(`${this.currentUser}_streak_date`);
         let now = new Date();
         if (lastQuizDateStr) {
-            let lastD = new Date(lastQuizDateStr);
-            let diffDays = Math.floor((now - lastD) / (1000 * 60 * 60 * 24));
+            // compare calendar days, not 24h blocks (a quiz at 11pm then 1am is "the next day")
+            const dayStart = d => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+            let diffDays = Math.round((dayStart(now) - dayStart(new Date(lastQuizDateStr))) / (1000 * 60 * 60 * 24));
             if (diffDays === 1) streak++;
             else if (diffDays > 1) streak = 1;
         } else {
@@ -1287,9 +1289,7 @@ const LS = {
         document.getElementById('ls-result-msg').innerText = msg;
 
         this.renderView('results');
-
-        // Trigger WhatsApp
-        this.sendWhatsApp(this.quizScore);
+        // WhatsApp is sent from the "Send on WhatsApp" button: browsers block window.open from a timer
     },
 
     triggerParticles(char, count) {
@@ -1305,8 +1305,9 @@ const LS = {
         }
     },
 
-    sendWhatsApp(score) {
-        const phone = this.currentUser === 'Mahmoud' ? '201500545584' : '20117576839';
+    sendWhatsApp(score = this.quizScore) {
+        // the result goes to the partner (Mahmoud's number was missing a digit before)
+        const phone = this.currentUser === 'Mahmoud' ? '201500545584' : '201107576839';
         let text = "";
         
         if (score >= 17) {
@@ -1318,11 +1319,7 @@ const LS = {
         }
         
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-        
-        // Small delay to let user see score first
-        setTimeout(() => {
-            window.open(url, '_blank');
-        }, 2000);
+        window.open(url, '_blank', 'noopener');
     }
 };
 
