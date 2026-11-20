@@ -166,9 +166,7 @@ function loadGallery() {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
         galleryItem.innerHTML = `
-            <img src="images/${image.filename}" alt="Our Memory ${index + 1}" loading="lazy" tabindex="0" role="button"
-                 onclick="toggleCaption(${index})"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCaption(${index})}">
+            <img src="images/${image.filename}" alt="Our Memory ${index + 1}" loading="lazy" tabindex="0" role="button">
             <div class="gallery-caption" id="caption-${index}">${image.caption}</div>
             `;
         galleryGrid.appendChild(galleryItem);
@@ -516,9 +514,7 @@ function loadDateGallery() {
         const item = document.createElement('div');
         item.className = 'date-item';
         item.innerHTML = `
-            <img src="images/${image.filename}" alt="Our Engagement Memory ${index + 1}" loading="lazy" tabindex="0" role="button"
-                 onclick="toggleCaption(${globalIndex})"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCaption(${globalIndex})}">
+            <img src="images/${image.filename}" alt="Our Engagement Memory ${index + 1}" loading="lazy" tabindex="0" role="button">
             <div class="gallery-caption" id="caption-${globalIndex}" lang="ar" dir="rtl">${image.caption}</div>
         `;
         dateGrid.appendChild(item);
@@ -1325,3 +1321,95 @@ const LS = {
 
 // Globalize for HTML onclick
 window.LS = LS;
+
+
+/* ========================================================================= */
+/* LIGHTBOX: grid keeps tidy thumbnails, a click opens the photo at its full */
+/* original size (shrunk only if the screen is smaller than the photo)       */
+/* ========================================================================= */
+const Lightbox = {
+    items: [],   // images of the grid that was clicked
+    index: 0,
+
+    open(img) {
+        const grid = img.closest('.gallery-grid, .date-grid');
+        this.items = Array.from(grid.querySelectorAll('img'));
+        this.index = this.items.indexOf(img);
+        this.render();
+        document.getElementById('lightbox').classList.add('open');
+        document.body.classList.add('lightbox-open');
+        document.getElementById('lightbox-close').focus();
+    },
+
+    render() {
+        document.getElementById('lightbox').classList.remove('zoomed');
+        const img = this.items[this.index];
+        const cap = img.parentElement.querySelector('.gallery-caption');
+        const big = document.getElementById('lightbox-img');
+        big.src = img.currentSrc || img.src;
+        big.alt = img.alt;
+        const capEl = document.getElementById('lightbox-caption');
+        capEl.textContent = cap ? cap.textContent.trim() : '';
+        capEl.dir = cap && cap.getAttribute('dir') ? cap.getAttribute('dir') : 'ltr';
+        const multi = this.items.length > 1;
+        document.getElementById('lightbox-prev').hidden = !multi;
+        document.getElementById('lightbox-next').hidden = !multi;
+    },
+
+    step(delta) {
+        this.index = (this.index + delta + this.items.length) % this.items.length;
+        this.render();
+    },
+
+    toggleZoom() {
+        const box = document.getElementById('lightbox');
+        box.classList.toggle('zoomed');
+        const stage = box.querySelector('.lightbox-stage');
+        stage.scrollTop = 0;
+        stage.scrollLeft = 0;
+    },
+
+    close() {
+        document.getElementById('lightbox').classList.remove('open', 'zoomed');
+        document.body.classList.remove('lightbox-open');
+        const opener = this.items[this.index];
+        document.getElementById('lightbox-img').removeAttribute('src');
+        if (opener) opener.focus({ preventScroll: true });
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const box = document.getElementById('lightbox');
+    if (!box) return;
+
+    document.addEventListener('click', e => {
+        const img = e.target.closest('.gallery-item img, .date-item img');
+        if (img) Lightbox.open(img);
+    });
+    document.addEventListener('keydown', e => {
+        const img = e.target.closest && e.target.closest('.gallery-item img, .date-item img');
+        if (img && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); Lightbox.open(img); return; }
+        if (!box.classList.contains('open')) return;
+        if (e.key === 'Escape') Lightbox.close();
+        else if (e.key === 'ArrowRight') Lightbox.step(1);
+        else if (e.key === 'ArrowLeft') Lightbox.step(-1);
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', () => Lightbox.close());
+    document.getElementById('lightbox-img').addEventListener('click', () => Lightbox.toggleZoom());
+    document.getElementById('lightbox-prev').addEventListener('click', e => { e.stopPropagation(); Lightbox.step(-1); });
+    document.getElementById('lightbox-next').addEventListener('click', e => { e.stopPropagation(); Lightbox.step(1); });
+    // click on the dark backdrop closes it, click on the photo itself doesn't
+    box.addEventListener('click', e => { if (e.target === box || e.target.classList.contains('lightbox-stage')) Lightbox.close(); });
+
+    // swipe left / right on phones
+    let x0 = null;
+    box.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', e => {
+        if (x0 === null) return;
+        if (box.classList.contains('zoomed')) { x0 = null; return; }
+        const dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 50) Lightbox.step(dx < 0 ? 1 : -1);
+        x0 = null;
+    });
+});
